@@ -2,16 +2,22 @@ package com.ezzy.newsapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.ezzy.newsapp.R
+import com.ezzy.newsapp.database.ArticleDatabase
+import com.ezzy.newsapp.repository.NewsRepository
+import com.ezzy.newsapp.viewmodel.NewsViewModel
+import com.ezzy.newsapp.viewmodel.NewsViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class NewsActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var newsNavHostFragment: NavHostFragment
+    lateinit var newsViewModel: NewsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +29,12 @@ class NewsActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(
             newsNavHostFragment.findNavController()
         )
+
+        val newsRepository = NewsRepository(ArticleDatabase(this))
+        val newsViewModelFactory = NewsViewModelFactory(newsRepository)
+        newsViewModel = ViewModelProvider(this, newsViewModelFactory)
+            .get(NewsViewModel::class.java)
+
 
     }
 }
