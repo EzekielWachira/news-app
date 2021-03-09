@@ -5,10 +5,12 @@ import com.ezzy.newsapp.util.Constants
 import com.ezzy.newsapp.util.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface NewsApi {
     @GET("v2/top-headlines")
+    @Headers("Content-Type: application/json")
     suspend fun getBreakingNews(
         @Query("country") countryCode: String = "us",
         @Query("page") pageNumber: Int = 1,
