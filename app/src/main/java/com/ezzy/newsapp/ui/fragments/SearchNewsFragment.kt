@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ezzy.newsapp.R
@@ -35,6 +36,16 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
         super.onViewCreated(view, savedInstanceState)
         newsViewModel = (activity as NewsActivity).newsViewModel
         setUpRecyclerview()
+
+        newsAdapter.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                    R.id.action_searchNewsFragment_to_articleFragment,
+                    bundle
+            )
+        }
 
         var job: Job? = null
         requireView().findViewById<EditText>(R.id.etSearch)
