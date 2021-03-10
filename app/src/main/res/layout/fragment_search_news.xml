@@ -28,7 +28,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <ProgressBar
-        android:id="@+id/paginationProgressBar"
+        android:id="@+id/paginationProgress"
         style="?attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

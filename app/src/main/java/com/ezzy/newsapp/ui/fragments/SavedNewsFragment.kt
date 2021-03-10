@@ -9,6 +9,7 @@ import com.ezzy.newsapp.R
 import com.ezzy.newsapp.ui.NewsActivity
 import com.ezzy.newsapp.viewmodel.NewsViewModel
 
+private const val TAG = "SavedNewsFragment"
 class SavedNewsFragment : Fragment() {
 
     private lateinit var newsViewModel: NewsViewModel
