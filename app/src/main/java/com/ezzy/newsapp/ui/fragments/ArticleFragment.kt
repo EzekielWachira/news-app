@@ -11,6 +11,8 @@ import androidx.navigation.fragment.navArgs
 import com.ezzy.newsapp.R
 import com.ezzy.newsapp.ui.NewsActivity
 import com.ezzy.newsapp.viewmodel.NewsViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
 
@@ -25,6 +27,10 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         requireView().findViewById<WebView>(R.id.webView).apply {
             webViewClient = WebViewClient()
             loadUrl(article.url)
+        }
+        requireView().findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            newsViewModel.saveArticle(article)
+            Snackbar.make(view, "Article Saved", Snackbar.LENGTH_SHORT).show()
         }
 
     }
