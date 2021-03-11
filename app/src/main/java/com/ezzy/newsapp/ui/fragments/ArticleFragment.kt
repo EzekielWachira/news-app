@@ -26,7 +26,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         val article = args.article
         requireView().findViewById<WebView>(R.id.webView).apply {
             webViewClient = WebViewClient()
-            loadUrl(article.url)
+            article.url?.let { loadUrl(it) }
         }
         requireView().findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             newsViewModel.saveArticle(article)
