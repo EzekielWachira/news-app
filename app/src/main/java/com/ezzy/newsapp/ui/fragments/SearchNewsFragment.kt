@@ -21,6 +21,7 @@ import com.ezzy.newsapp.ui.NewsActivity
 import com.ezzy.newsapp.util.Constants
 import com.ezzy.newsapp.util.Constants.Companion.QUERY_PAGE_SIZE
 import com.ezzy.newsapp.util.Constants.Companion.SEARCH_NEWS_TIME_DELAY
+import com.ezzy.newsapp.util.RecyclerViewItemDecorator
 import com.ezzy.newsapp.util.Resource
 import com.ezzy.newsapp.viewmodel.NewsViewModel
 import kotlinx.coroutines.Job
@@ -104,6 +105,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
             addOnScrollListener(this@SearchNewsFragment.scrollListener)
+            addItemDecoration(RecyclerViewItemDecorator(10))
         }
     }
 

@@ -17,6 +17,7 @@ import com.ezzy.newsapp.R
 import com.ezzy.newsapp.adapters.NewsAdapter
 import com.ezzy.newsapp.ui.NewsActivity
 import com.ezzy.newsapp.util.Constants.Companion.QUERY_PAGE_SIZE
+import com.ezzy.newsapp.util.RecyclerViewItemDecorator
 import com.ezzy.newsapp.util.Resource
 import com.ezzy.newsapp.viewmodel.NewsViewModel
 
@@ -82,6 +83,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
             addOnScrollListener(this@BreakingNewsFragment.scrollListener)
+            addItemDecoration(RecyclerViewItemDecorator(10))
         }
     }
 

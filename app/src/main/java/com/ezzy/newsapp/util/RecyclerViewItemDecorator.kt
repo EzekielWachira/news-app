@@ -1,12 +1,20 @@
-//package com.ezzy.newsapp.util
-//
-//import android.content.Context
-//import androidx.recyclerview.widget.RecyclerView
-//
-//class RecyclerViewItemDecorator(
-//        context: Context,
-//        val paddingLeft: Int,
-//        val paddingRight: Int
-//) : RecyclerView.ItemDecoration() {
-//
-//}
+package com.ezzy.newsapp.util
+
+import android.content.Context
+import android.graphics.Rect
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+
+class RecyclerViewItemDecorator(
+  val verticalSpaceHeight: Int
+) : RecyclerView.ItemDecoration() {
+
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+        super.getItemOffsets(outRect, view, parent, state)
+        outRect.bottom = verticalSpaceHeight
+        if (parent.getChildAdapterPosition(view) != parent.adapter?.itemCount?.minus(1)){
+            outRect.bottom = verticalSpaceHeight
+        }
+    }
+
+}

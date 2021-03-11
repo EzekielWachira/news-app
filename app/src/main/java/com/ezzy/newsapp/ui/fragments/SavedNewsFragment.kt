@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ezzy.newsapp.R
 import com.ezzy.newsapp.adapters.NewsAdapter
 import com.ezzy.newsapp.ui.NewsActivity
+import com.ezzy.newsapp.util.RecyclerViewItemDecorator
 import com.ezzy.newsapp.viewmodel.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -88,6 +89,7 @@ class SavedNewsFragment : Fragment() {
         recyclerView.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
+            addItemDecoration(RecyclerViewItemDecorator(10))
         }
     }
 
